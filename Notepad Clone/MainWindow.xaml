@@ -1,0 +1,105 @@
+﻿<Window x:Class="Notepad_Clone.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notepad_Clone"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <!--Header-->
+            <RowDefinition Height="32"/>
+            <!--Body-->
+            <RowDefinition/>
+            <!--Footer-->
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
+        
+        <!--Header-->
+        <Rectangle Fill="{StaticResource HeaderFooter}"/>
+        <!--Menu-->
+        <Menu Background="Transparent" VerticalAlignment="Center" VerticalContentAlignment="Center">
+            <!--File-->
+            <MenuItem Header="File" VerticalContentAlignment="Center">
+                <MenuItem Header="New tab" InputGestureText="Ctrl+N"/>
+                <MenuItem Header="New window" InputGestureText="Ctrl+Shift+N"/>
+                <MenuItem Header="Open" x:Name="Open_MenuItem" InputGestureText="Ctrl+O" Click="Open_MenuItem_Click"/>
+                <MenuItem Header="Save" x:Name="Save_MenuItem" InputGestureText="Ctrl+S" Click="Save_MenuItem_Click"/>
+                <MenuItem Header="Save as" InputGestureText="Ctrl+Shift+S"/>
+                <MenuItem Header="Save all" InputGestureText="Ctrl+Alt+S"/>
+                <Separator/>
+                <MenuItem Header="Page setup"/>
+                <MenuItem Header="Print" InputGestureText="Ctrl+P"/>
+                <Separator/>
+                <MenuItem Header="Close tab" InputGestureText="Ctrl+W"/>
+                <MenuItem Header="Close window" InputGestureText="Ctrl+Shift+W"/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <!--Edit-->
+            <MenuItem Header="Edit" VerticalContentAlignment="Center">
+                <MenuItem Header="Undo" InputGestureText="Ctrl+Z"/>
+                <Separator/>
+                <MenuItem Header="Cut" InputGestureText="Ctrl+X"/>
+                <MenuItem Header="Copy" InputGestureText="Ctrl+C"/>
+                <MenuItem Header="Paste" InputGestureText="Ctrl+V"/>
+                <MenuItem Header="Delete" InputGestureText="Del"/>
+                <Separator/>
+                <MenuItem Header="Find" InputGestureText="Ctrl+F"/>
+                <MenuItem Header="Find next" InputGestureText="F3"/>
+                <MenuItem Header="Find previous" InputGestureText="Shift+F3"/>
+                <MenuItem Header="Replace" InputGestureText="Ctrl+H"/>
+                <MenuItem Header="Go to" InputGestureText="Ctrl+G"/>
+                <Separator/>
+                <MenuItem Header="Select all" InputGestureText="Ctrl+A"/>
+                <MenuItem Header="Time/Date" InputGestureText="F5"/>
+                <Separator/>
+                <MenuItem Header="Font"/>
+            </MenuItem>
+            <!--View-->
+            <MenuItem Header="View" VerticalContentAlignment="Center">
+                <MenuItem Header="Zoom">
+                    <MenuItem Header="Zoom in" InputGestureText="Ctrl+Plus"/>
+                    <MenuItem Header="Zoom out" InputGestureText="Ctrl+Minus"/>
+                    <MenuItem Header="Restore default zoom" InputGestureText="Ctrl+0"/>
+                </MenuItem>
+                <MenuItem Header="Status bar" IsCheckable="True" IsChecked="True"/>
+                <MenuItem Header="Word wrap" IsCheckable="True" IsChecked="True"/>
+            </MenuItem>
+        </Menu>
+        
+        <!--Body-->
+        <Rectangle Fill="{StaticResource Body}" Grid.Row="1"/>
+        <TextBox Grid.Row="1" x:Name="TextArea" Background="Transparent" Foreground="{StaticResource BodyText}" 
+                 BorderThickness="0" Padding="20" FontSize="16" FontFamily="Lucida Console" 
+                 CaretBrush="{StaticResource BodyText}" AcceptsReturn="True" TextWrapping="Wrap"/>
+
+        <!--Footer-->
+        <Grid Grid.Row="2" Background="{StaticResource HeaderFooter}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Stats col/ln-->
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,0">
+                <TextBlock x:Name="LineText" Text="Ln:"/>
+                <TextBlock x:Name="LineCountText" Text="0"/>
+                <TextBlock x:Name="Coma" Text="," Margin="-10,0,10,0"/>
+                <TextBlock x:Name="ColumnText" Text="Col:"/>
+                <TextBlock x:Name="ColumnCountText" Text="0"/>
+            </StackPanel>
+            <!--Zoom-->
+            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Width="1" Height="25" Fill="{StaticResource Menu.Static.Border}" Margin="-10,0" />
+            <TextBlock Grid.Column="1" Text="Zoom 100%"/>
+            <!--Carriage Returns-->
+            <Rectangle Grid.Column="2" HorizontalAlignment="Left" Width="1" Height="25" Fill="{StaticResource Menu.Static.Border}" Margin="-10,0" />
+            <TextBlock Grid.Column="2" Text="Windows (CRLF)"/>
+            <!--Encoding-->
+            <Rectangle Grid.Column="3" HorizontalAlignment="Left" Width="1" Height="25" Fill="{StaticResource Menu.Static.Border}" Margin="-10,0" />
+            <TextBlock Grid.Column="3" Text="UTF-8"/>
+        </Grid>
+    </Grid>
+</Window>

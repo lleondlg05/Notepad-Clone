@@ -1,0 +1,18 @@
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\Notepad Clone.csproj.AssemblyReference.cache
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\Notepad Clone.csproj.SuggestedBindingRedirects.cache
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\MainWindow.g.cs
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\App.g.cs
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\Notepad Clone_MarkupCompile.cache
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\Notepad Clone_MarkupCompile.lref
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\bin\Debug\Notepad Clone.exe.config
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\bin\Debug\Notepad Clone.exe
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\bin\Debug\Notepad Clone.pdb
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\Assets\CustomTheme.baml
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\App.baml
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\MainWindow.baml
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\Notepad Clone.g.resources
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\Notepad_Clone.Properties.Resources.resources
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\Notepad Clone.csproj.GenerateResource.cache
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\Notepad Clone.csproj.CoreCompileInputs.cache
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\Notepad Clone.exe
+C:\Users\luisl\Projects\Notepad Clone\Notepad Clone\obj\Debug\Notepad Clone.pdb
