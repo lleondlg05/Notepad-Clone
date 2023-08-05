@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notepad_Clone"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <!--Header-->
@@ -22,14 +24,14 @@
         <Menu Background="Transparent" VerticalAlignment="Center" VerticalContentAlignment="Center">
             <!--File-->
             <MenuItem Header="File" VerticalContentAlignment="Center">
-                <MenuItem Header="New tab" InputGestureText="Ctrl+N"/>
-                <MenuItem Header="New window" InputGestureText="Ctrl+Shift+N"/>
+                <MenuItem Header="New tab" x:Name="NewTab_MenuItem" InputGestureText="Ctrl+N" Click="NewTab_MenuItem_Click"/>
+                <MenuItem Header="New window" x:Name="NewWindow_MenuItem" InputGestureText="Ctrl+Shift+N" Click="NewWindow_MenuItem_Click"/>
                 <MenuItem Header="Open" x:Name="Open_MenuItem" InputGestureText="Ctrl+O" Click="Open_MenuItem_Click"/>
                 <MenuItem Header="Save" x:Name="Save_MenuItem" InputGestureText="Ctrl+S" Click="Save_MenuItem_Click"/>
-                <MenuItem Header="Save as" InputGestureText="Ctrl+Shift+S"/>
+                <MenuItem Header="Save as" x:Name="SaveAs_MenuItem" InputGestureText="Ctrl+Shift+S" Click="SaveAs_MenuItem_Click"/>
                 <MenuItem Header="Save all" InputGestureText="Ctrl+Alt+S"/>
                 <Separator/>
-                <MenuItem Header="Page setup"/>
+                <MenuItem Header="Page setup" x:Name="PageSetupMenuItem" Click="PageSetupMenuItem_Click"/>
                 <MenuItem Header="Print" InputGestureText="Ctrl+P"/>
                 <Separator/>
                 <MenuItem Header="Close tab" InputGestureText="Ctrl+W"/>
@@ -72,7 +74,8 @@
         <Rectangle Fill="{StaticResource Body}" Grid.Row="1"/>
         <TextBox Grid.Row="1" x:Name="TextArea" Background="Transparent" Foreground="{StaticResource BodyText}" 
                  BorderThickness="0" Padding="20" FontSize="16" FontFamily="Lucida Console" 
-                 CaretBrush="{StaticResource BodyText}" AcceptsReturn="True" TextWrapping="Wrap"/>
+                 CaretBrush="{StaticResource BodyText}" AcceptsReturn="True" TextWrapping="Wrap"
+                 TextChanged="TextArea_TextChanged"/>
 
         <!--Footer-->
         <Grid Grid.Row="2" Background="{StaticResource HeaderFooter}">

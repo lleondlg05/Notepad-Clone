@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Diagnostics;
 
 namespace Notepad_Clone
 {
@@ -24,9 +25,9 @@ namespace Notepad_Clone
     {
         bool match = true;
 
-        string filePath;
-        string titleName;
-        string documentContent;
+        string filePath = "";
+        string titleName = "Untitled";
+        string documentContent = "";
 
         private bool Match
         {
@@ -57,6 +58,43 @@ namespace Notepad_Clone
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            TitleManager();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!match)
+            {
+                e.Cancel = true;
+                if (MessageBox.Show("You have not saved the document. Would you like save the changes now?",
+                    "Save document", MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    SaveDocument();
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
+
+            }
+        }
+
+        private void NewWindow_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try 
+            {
+                Process.Start(Process.GetCurrentProcess().MainModule.FileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to do that." + ex.Message);
+            }
+        }
+
         private void Open_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Open_FileDialog();
@@ -65,6 +103,11 @@ namespace Notepad_Clone
         private void Save_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             SaveDocument();
+        }
+
+        private void SaveAs_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            SaveAs();
         }
 
         private void Open_FileDialog()
@@ -112,16 +155,103 @@ namespace Notepad_Clone
                 SaveFileStream.Write(DocumentContent);
                 //Close the stream
                 SaveFileStream.Close();
+
+                Match = true;
             }
             else
             {
                 SaveAs();
             }
+
+            TitleManager();
         }
 
         private void SaveAs()
         {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.ShowDialog();
 
+            if(sfd.FileName != "")
+            {
+                FilePath = sfd.FileName;
+                TitleName= sfd.SafeFileName;
+                StreamWriter sw = new StreamWriter(FilePath);
+                DocumentContent = TextArea.Text;
+                sw.Write(DocumentContent);
+                sw.Close();
+
+                Match = true;
+            }
+            TitleManager();
         }
+
+        private void PageSetupMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog pd = new PrintDialog();
+            pd.ShowDialog();
+        }
+
+        private void TextArea_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TextArea.Text != DocumentContent)
+            {
+                //Add an asterix on the beginning of our tittle
+                match = false;
+            }
+            else
+            {
+                match = true;
+            }
+
+            TitleManager();
+        }
+
+        private void TitleManager()
+        {
+            if (match)
+            {
+                Title = TitleName + " - " + "Notepad Clone";
+            }
+            else
+            {
+                Title = "*" + TitleName + " - " + "Notepad Clone";
+            }
+        }
+
+        private void NewDocument()
+        {
+            if (!Match)
+            {
+                FilePath = "";
+                TitleName = "Untitled";
+                DocumentContent = "";
+                Match = true;
+                TextArea.Text = DocumentContent;
+            }
+        }
+
+        private void NewTab_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (!match)
+            {
+                if (MessageBox.Show("You have not saved the document. Would you like save the changes now?",
+                    "Save document", MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    SaveDocument();
+                    NewDocument();
+                }
+                else
+                {
+                    NewDocument();
+                }
+
+            }
+            else
+            {
+                NewDocument();
+            }
+        }
+
     }
 }
