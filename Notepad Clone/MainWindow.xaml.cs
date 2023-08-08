@@ -110,6 +110,53 @@ namespace Notepad_Clone
             SaveAs();
         }
 
+        private void Exit_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Undo_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (TextArea.CanUndo)
+                TextArea.Undo();
+        }
+
+        private void Cut_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            TextArea.Cut();
+        }
+
+        private void Copy_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            TextArea.Copy();
+        }
+
+        private void Paste_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            TextArea.Paste();
+        }
+
+        private void Delete_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            TextArea.Text = TextArea.Text.Remove(TextArea.SelectionStart, TextArea.SelectionLength);
+        }
+
+        private void PageSetupMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog pd = new PrintDialog();
+            pd.ShowDialog();
+        }
+
+        private void SelectAll_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            TextArea.SelectAll();
+        }
+
+        private void TimeDate_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            TextArea.Text = TextArea.Text.Insert(TextArea.CaretIndex, DateTime.Now.ToString());
+        }
+
         private void Open_FileDialog()
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -183,12 +230,6 @@ namespace Notepad_Clone
                 Match = true;
             }
             TitleManager();
-        }
-
-        private void PageSetupMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            PrintDialog pd = new PrintDialog();
-            pd.ShowDialog();
         }
 
         private void TextArea_TextChanged(object sender, TextChangedEventArgs e)

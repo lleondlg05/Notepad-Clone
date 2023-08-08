@@ -36,16 +36,16 @@
                 <Separator/>
                 <MenuItem Header="Close tab" InputGestureText="Ctrl+W"/>
                 <MenuItem Header="Close window" InputGestureText="Ctrl+Shift+W"/>
-                <MenuItem Header="Exit"/>
+                <MenuItem Header="Exit" x:Name="Exit_MenuItem" Click="Exit_MenuItem_Click"/>
             </MenuItem>
             <!--Edit-->
             <MenuItem Header="Edit" VerticalContentAlignment="Center">
-                <MenuItem Header="Undo" InputGestureText="Ctrl+Z"/>
+                <MenuItem Header="Undo" x:Name="Undo_MenuItem" InputGestureText="Ctrl+Z" Click="Undo_MenuItem_Click"/>
                 <Separator/>
-                <MenuItem Header="Cut" InputGestureText="Ctrl+X"/>
-                <MenuItem Header="Copy" InputGestureText="Ctrl+C"/>
-                <MenuItem Header="Paste" InputGestureText="Ctrl+V"/>
-                <MenuItem Header="Delete" InputGestureText="Del"/>
+                <MenuItem Header="Cut" x:Name="Cut_MenuItem"  InputGestureText="Ctrl+X" Click="Cut_MenuItem_Click"/>
+                <MenuItem Header="Copy" x:Name="Copy_MenuItem" InputGestureText="Ctrl+C" Click="Copy_MenuItem_Click"/>
+                <MenuItem Header="Paste" x:Name="Paste_MenuItem" InputGestureText="Ctrl+V" Click="Paste_MenuItem_Click"/>
+                <MenuItem Header="Delete" x:Name="Delete_MenuItem" InputGestureText="Del" Click="Delete_MenuItem_Click"/>
                 <Separator/>
                 <MenuItem Header="Find" InputGestureText="Ctrl+F"/>
                 <MenuItem Header="Find next" InputGestureText="F3"/>
@@ -53,8 +53,8 @@
                 <MenuItem Header="Replace" InputGestureText="Ctrl+H"/>
                 <MenuItem Header="Go to" InputGestureText="Ctrl+G"/>
                 <Separator/>
-                <MenuItem Header="Select all" InputGestureText="Ctrl+A"/>
-                <MenuItem Header="Time/Date" InputGestureText="F5"/>
+                <MenuItem Header="Select all" x:Name="SelectAll_MenuItem" InputGestureText="Ctrl+A" Click="SelectAll_MenuItem_Click"/>
+                <MenuItem Header="Time/Date" x:Name="TimeDate_MenuItem" InputGestureText="F5" Click="TimeDate_MenuItem_Click"/>
                 <Separator/>
                 <MenuItem Header="Font"/>
             </MenuItem>
