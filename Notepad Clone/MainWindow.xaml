@@ -50,7 +50,7 @@
                 <MenuItem Header="Find" InputGestureText="Ctrl+F"/>
                 <MenuItem Header="Find next" InputGestureText="F3"/>
                 <MenuItem Header="Find previous" InputGestureText="Shift+F3"/>
-                <MenuItem Header="Replace" InputGestureText="Ctrl+H"/>
+                <MenuItem Header="Replace" x:Name="Replace_MenuItem" InputGestureText="Ctrl+H" Click="Replace_MenuItem_Click"/>
                 <MenuItem Header="Go to" InputGestureText="Ctrl+G"/>
                 <Separator/>
                 <MenuItem Header="Select all" x:Name="SelectAll_MenuItem" InputGestureText="Ctrl+A" Click="SelectAll_MenuItem_Click"/>
@@ -61,12 +61,12 @@
             <!--View-->
             <MenuItem Header="View" VerticalContentAlignment="Center">
                 <MenuItem Header="Zoom">
-                    <MenuItem Header="Zoom in" InputGestureText="Ctrl+Plus"/>
-                    <MenuItem Header="Zoom out" InputGestureText="Ctrl+Minus"/>
-                    <MenuItem Header="Restore default zoom" InputGestureText="Ctrl+0"/>
+                    <MenuItem Header="Zoom in" x:Name="ZoomIn_MenuItem" InputGestureText="Ctrl+Plus" Click="ZoomIn_MenuItem_Click"/>
+                    <MenuItem Header="Zoom out" x:Name="ZoomOut_MenuItem" InputGestureText="Ctrl+Minus" Click="ZoomOut_MenuItem_Click"/>
+                    <MenuItem Header="Restore default zoom" x:Name="RestoreDefaultZoom_MenuItem" InputGestureText="Ctrl+0" Click="RestoreDefaultZoom_MenuItem_Click"/>
                 </MenuItem>
-                <MenuItem Header="Status bar" IsCheckable="True" IsChecked="True"/>
-                <MenuItem Header="Word wrap" IsCheckable="True" IsChecked="True"/>
+                <MenuItem Header="Status bar" x:Name="StatusBar_MenuItem" IsCheckable="True" IsChecked="True" Click="StatusBar_MenuItem_Click"/>
+                <MenuItem Header="Word wrap" x:Name="WordWrap_MenuItem" IsCheckable="True" IsChecked="True" Click="WordWrap_MenuItem_Click"/>
             </MenuItem>
         </Menu>
         
@@ -78,7 +78,9 @@
                  TextChanged="TextArea_TextChanged"/>
 
         <!--Footer-->
-        <Grid Grid.Row="2" Background="{StaticResource HeaderFooter}">
+        <Rectangle Grid.Row="2" Fill="{StaticResource HeaderFooter}"/>
+
+        <Grid x:Name="statusBar" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="120"/>

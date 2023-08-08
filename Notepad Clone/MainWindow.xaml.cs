@@ -23,6 +23,12 @@ namespace Notepad_Clone
     /// </summary>
     public partial class MainWindow : Window
     {
+        public double zoomScale = 1;
+        private double incrementation = 0.1;
+
+        bool showStatusBar = true;
+        bool wordWrap = true;
+
         bool match = true;
 
         string filePath = "";
@@ -141,6 +147,11 @@ namespace Notepad_Clone
             TextArea.Text = TextArea.Text.Remove(TextArea.SelectionStart, TextArea.SelectionLength);
         }
 
+        private void Replace_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Create a pop up window to set the text to replace
+        }
+
         private void PageSetupMenuItem_Click(object sender, RoutedEventArgs e)
         {
             PrintDialog pd = new PrintDialog();
@@ -155,6 +166,34 @@ namespace Notepad_Clone
         private void TimeDate_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             TextArea.Text = TextArea.Text.Insert(TextArea.CaretIndex, DateTime.Now.ToString());
+        }
+        
+        //TODO
+        private void ZoomIn_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            zoomScale += incrementation;
+        }
+
+        //TODO
+        private void ZoomOut_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            zoomScale -= incrementation;
+        }
+
+        //TODO
+        private void RestoreDefaultZoom_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            zoomScale = 1;
+        }
+
+        private void StatusBar_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            StatusBarManager();
+        }
+
+        private void WordWrap_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            WordWrapManager();
         }
 
         private void Open_FileDialog()
@@ -292,6 +331,32 @@ namespace Notepad_Clone
             {
                 NewDocument();
             }
+        }
+
+        private void StatusBarManager()
+        {
+            if(showStatusBar)
+                showStatusBar = false;
+            else
+                showStatusBar = true;
+
+            if(showStatusBar)
+                statusBar.Visibility = Visibility.Visible;
+            else
+                statusBar.Visibility = Visibility.Collapsed;
+        }
+
+        private void WordWrapManager()
+        {
+            if(wordWrap)
+                wordWrap = false;
+            else
+                wordWrap = true;
+
+            if (wordWrap)
+                TextArea.TextWrapping = TextWrapping.Wrap;
+            else
+                TextArea.TextWrapping = TextWrapping.NoWrap;
         }
 
     }
