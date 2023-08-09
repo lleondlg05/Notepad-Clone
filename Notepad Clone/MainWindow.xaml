@@ -75,7 +75,7 @@
         <TextBox Grid.Row="1" x:Name="TextArea" Background="Transparent" Foreground="{StaticResource BodyText}" 
                  BorderThickness="0" Padding="20" FontSize="16" FontFamily="Lucida Console" 
                  CaretBrush="{StaticResource BodyText}" AcceptsReturn="True" TextWrapping="Wrap"
-                 TextChanged="TextArea_TextChanged"/>
+                 TextChanged="TextArea_TextChanged" VerticalScrollBarVisibility="Auto"/>
 
         <!--Footer-->
         <Rectangle Grid.Row="2" Fill="{StaticResource HeaderFooter}"/>

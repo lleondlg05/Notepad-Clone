@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace Notepad_Clone
 {
@@ -25,6 +26,8 @@ namespace Notepad_Clone
     {
         public double zoomScale = 1;
         private double incrementation = 0.1;
+        private double defaultZoomScale = 1;
+        private double fontSize = 16;
 
         bool showStatusBar = true;
         bool wordWrap = true;
@@ -147,9 +150,10 @@ namespace Notepad_Clone
             TextArea.Text = TextArea.Text.Remove(TextArea.SelectionStart, TextArea.SelectionLength);
         }
 
+        //TODO: Create a pop up window to set the text to replace
         private void Replace_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Create a pop up window to set the text to replace
+           
         }
 
         private void PageSetupMenuItem_Click(object sender, RoutedEventArgs e)
@@ -168,22 +172,22 @@ namespace Notepad_Clone
             TextArea.Text = TextArea.Text.Insert(TextArea.CaretIndex, DateTime.Now.ToString());
         }
         
-        //TODO
         private void ZoomIn_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             zoomScale += incrementation;
+            TextArea.FontSize = fontSize * zoomScale / defaultZoomScale;
         }
 
-        //TODO
         private void ZoomOut_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             zoomScale -= incrementation;
+            TextArea.FontSize = fontSize * zoomScale / defaultZoomScale;
         }
 
-        //TODO
         private void RestoreDefaultZoom_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            zoomScale = 1;
+            zoomScale = defaultZoomScale;
+            TextArea.FontSize = fontSize * zoomScale / defaultZoomScale;
         }
 
         private void StatusBar_MenuItem_Click(object sender, RoutedEventArgs e)
@@ -199,6 +203,8 @@ namespace Notepad_Clone
         private void Open_FileDialog()
         {
             OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            ofd.FilterIndex = 1;
             //Open the dialog
             ofd.ShowDialog();
 
@@ -255,6 +261,8 @@ namespace Notepad_Clone
         private void SaveAs()
         {
             SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            sfd.FilterIndex = 1;
             sfd.ShowDialog();
 
             if(sfd.FileName != "")
