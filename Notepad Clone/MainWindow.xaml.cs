@@ -19,15 +19,19 @@ using System.Security.Cryptography;
 
 namespace Notepad_Clone
 {
-    /// <summary>
-    /// Open the OpenFileDialog
-    /// </summary>
+    //TODO: Set line and columns
+    //TODO: Create the shortcuts
+    //TODO: Initialize the Carriage Returns
+    //TODO: Initialize the Unicode
+    //TODO: Create a popup to change the font settings
+    //TODO: Save the font changes and load them at the app startup
+
     public partial class MainWindow : Window
     {
-        public double zoomScale = 1;
+        private double zoomScale = 1;
         private double incrementation = 0.1;
         private double defaultZoomScale = 1;
-        private double fontSize = 16;
+        private double defaultFontSize = 16;
 
         bool showStatusBar = true;
         bool wordWrap = true;
@@ -175,19 +179,22 @@ namespace Notepad_Clone
         private void ZoomIn_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             zoomScale += incrementation;
-            TextArea.FontSize = fontSize * zoomScale / defaultZoomScale;
+            TextArea.FontSize = defaultFontSize * zoomScale;
+            ZoomTextBlock.Text = $"Zoom {zoomScale * 100}%";
         }
 
         private void ZoomOut_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             zoomScale -= incrementation;
-            TextArea.FontSize = fontSize * zoomScale / defaultZoomScale;
+            TextArea.FontSize = defaultFontSize * zoomScale;
+            ZoomTextBlock.Text = $"Zoom {zoomScale * 100}%";
         }
 
         private void RestoreDefaultZoom_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             zoomScale = defaultZoomScale;
-            TextArea.FontSize = fontSize * zoomScale / defaultZoomScale;
+            TextArea.FontSize = defaultFontSize * zoomScale;
+            ZoomTextBlock.Text = $"Zoom {zoomScale * 100}%";
         }
 
         private void StatusBar_MenuItem_Click(object sender, RoutedEventArgs e)
