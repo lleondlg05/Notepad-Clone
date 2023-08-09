@@ -8,6 +8,7 @@
         Title="MainWindow" Height="450" Width="800"
         Loaded="Window_Loaded"
         Closing="Window_Closing">
+
     <Grid>
         <Grid.RowDefinitions>
             <!--Header-->
@@ -22,6 +23,7 @@
         <Rectangle Fill="{StaticResource HeaderFooter}"/>
         <!--Menu-->
         <Menu Background="Transparent" VerticalAlignment="Center" VerticalContentAlignment="Center">
+
             <!--File-->
             <MenuItem Header="File" VerticalContentAlignment="Center">
                 <MenuItem Header="New tab" x:Name="NewTab_MenuItem" InputGestureText="Ctrl+N" Click="NewTab_MenuItem_Click"/>
@@ -60,7 +62,7 @@
             </MenuItem>
             <!--View-->
             <MenuItem Header="View" VerticalContentAlignment="Center">
-                <MenuItem Header="Zoom">
+                <MenuItem Header="Zoom" VerticalAlignment="Center">
                     <MenuItem Header="Zoom in" x:Name="ZoomIn_MenuItem" InputGestureText="Ctrl+Plus" Click="ZoomIn_MenuItem_Click"/>
                     <MenuItem Header="Zoom out" x:Name="ZoomOut_MenuItem" InputGestureText="Ctrl+Minus" Click="ZoomOut_MenuItem_Click"/>
                     <MenuItem Header="Restore default zoom" x:Name="RestoreDefaultZoom_MenuItem" InputGestureText="Ctrl+0" Click="RestoreDefaultZoom_MenuItem_Click"/>
@@ -75,7 +77,8 @@
         <TextBox Grid.Row="1" x:Name="TextArea" Background="Transparent" Foreground="{StaticResource BodyText}" 
                  BorderThickness="0" Padding="20" FontSize="16" FontFamily="Lucida Console" 
                  CaretBrush="{StaticResource BodyText}" AcceptsReturn="True" TextWrapping="Wrap"
-                 TextChanged="TextArea_TextChanged" VerticalScrollBarVisibility="Auto"/>
+                 TextChanged="TextArea_TextChanged" VerticalScrollBarVisibility="Auto" 
+                 SelectionChanged="TextArea_SelectionChanged"/>
 
         <!--Footer-->
         <Rectangle Grid.Row="2" Fill="{StaticResource HeaderFooter}"/>
@@ -90,15 +93,18 @@
 
             <!--Stats col/ln-->
             <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,0">
-                <TextBlock x:Name="LineText" Text="Ln:"/>
-                <TextBlock x:Name="LineCountText" Text="0"/>
-                <TextBlock x:Name="Coma" Text="," Margin="-10,0,10,0"/>
-                <TextBlock x:Name="ColumnText" Text="Col:"/>
-                <TextBlock x:Name="ColumnCountText" Text="0"/>
+                <TextBlock Text="Ln:"/>
+                <TextBlock x:Name="LineIndexText" Text="0"/>
+                <TextBlock Text="," Margin="-10,0,10,0"/>
+                <TextBlock Text="Col:"/>
+                <TextBlock x:Name="ColumnIndexText" Text="0"/>
+                <TextBlock Text="," Margin="-10,0,10,0"/>
+                <TextBlock Text="Caret: "/>
+                <TextBlock x:Name="CaretIndexText" Text="0"/>
             </StackPanel>
             <!--Zoom-->
             <Rectangle Grid.Column="1" HorizontalAlignment="Left" Width="1" Height="25" Fill="{StaticResource Menu.Static.Border}" Margin="-10,0" />
-            <TextBlock Grid.Column="1" Text="Zoom 100%"/>
+            <TextBlock x:Name="ZoomTextBlock" Grid.Column="1" Text="Zoom 100%"/>
             <!--Carriage Returns-->
             <Rectangle Grid.Column="2" HorizontalAlignment="Left" Width="1" Height="25" Fill="{StaticResource Menu.Static.Border}" Margin="-10,0" />
             <TextBlock Grid.Column="2" Text="Windows (CRLF)"/>

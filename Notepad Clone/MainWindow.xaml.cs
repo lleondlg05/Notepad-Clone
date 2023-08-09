@@ -374,5 +374,18 @@ namespace Notepad_Clone
                 TextArea.TextWrapping = TextWrapping.NoWrap;
         }
 
+        private void TextArea_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            int lineIdx = 0;
+            int columnIdx = 0;
+            int caretIdx = TextArea.CaretIndex;
+            string content = TextArea.Text;
+
+
+
+            LineIndexText.Text = lineIdx.ToString();
+            ColumnIndexText.Text = columnIdx.ToString();
+            CaretIndexText.Text = TextArea.CaretIndex.ToString();
+        }
     }
 }
