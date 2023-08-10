@@ -381,11 +381,20 @@ namespace Notepad_Clone
             int caretIdx = TextArea.CaretIndex;
             string content = TextArea.Text;
 
+            columnIdx = caretIdx;
 
+            for (int i = 0; i < caretIdx; i++)
+            {
+                if (content[i] == '\n')
+                {
+                    lineIdx++;
+                    columnIdx = caretIdx - (i + 1);
+                }
+                
+            }
 
             LineIndexText.Text = lineIdx.ToString();
             ColumnIndexText.Text = columnIdx.ToString();
-            CaretIndexText.Text = TextArea.CaretIndex.ToString();
         }
     }
 }
