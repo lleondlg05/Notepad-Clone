@@ -98,9 +98,7 @@
                 <TextBlock Text="," Margin="-10,0,10,0"/>
                 <TextBlock Text="Col:"/>
                 <TextBlock x:Name="ColumnIndexText" Text="0"/>
-                <TextBlock Text="," Margin="-10,0,10,0"/>
-                <TextBlock Text="Caret: "/>
-                <TextBlock x:Name="CaretIndexText" Text="0"/>
+
             </StackPanel>
             <!--Zoom-->
             <Rectangle Grid.Column="1" HorizontalAlignment="Left" Width="1" Height="25" Fill="{StaticResource Menu.Static.Border}" Margin="-10,0" />
