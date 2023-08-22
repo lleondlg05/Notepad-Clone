@@ -74,6 +74,7 @@ namespace Notepad_Clone
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             TitleManager();
+            LoadCarriageReturns();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -395,6 +396,22 @@ namespace Notepad_Clone
 
             LineIndexText.Text = lineIdx.ToString();
             ColumnIndexText.Text = columnIdx.ToString();
+        }
+
+        private void LoadCarriageReturns()
+        {
+            if(Environment.NewLine ==  "\r\n")
+            {
+                CarriageReturnTextBlock.Text = "Windows (CRLF)";
+            }
+            else if(Environment.NewLine == "\r")
+            {
+                CarriageReturnTextBlock.Text = "Macintosh (CR)";
+            }
+            else if (Environment.NewLine == "\n") 
+            {
+                CarriageReturnTextBlock.Text = "Unix (LF)";            
+            }
         }
     }
 }
