@@ -75,6 +75,7 @@ namespace Notepad_Clone
         {
             TitleManager();
             LoadCarriageReturns();
+            LoadEncoding();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -412,6 +413,11 @@ namespace Notepad_Clone
             {
                 CarriageReturnTextBlock.Text = "Unix (LF)";            
             }
+        }
+
+        private void LoadEncoding()
+        {
+            EncodingTextBlock.Text = $"{Encoding.Default}";
         }
     }
 }
