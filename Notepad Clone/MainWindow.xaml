@@ -12,11 +12,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <!--Header-->
-            <RowDefinition Height="32"/>
+            <RowDefinition Height="1*"/>
             <!--Body-->
-            <RowDefinition/>
+            <RowDefinition Height="12*"/>
             <!--Footer-->
-            <RowDefinition Height="32"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         
         <!--Header-->
